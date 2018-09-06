@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <ctime>
 
 using namespace std;
 
@@ -7,6 +8,7 @@ int CalPrimeFactor(int a, int bak, bool flag1, bool flag2);
 int main()
 {
 	int a;
+	clock_t s, e;
 	cout << "Prime factor decomposition of an integer greater than 1: " << endl;
 	do
 	{
@@ -14,7 +16,10 @@ int main()
 		cin >> a;	
 	}
 	while(a <= 1);
+	s = clock();
 	CalPrimeFactor(a, a, false, false);
+	e = clock();
+	cout << "Run time: " << (double)(e - s) << endl;
 	return 0;
 }
 /*
