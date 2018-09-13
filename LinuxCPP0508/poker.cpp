@@ -12,16 +12,18 @@ void swap(int* a, int* b)
 	*b = t;
 }
 static char poker[13] = {'K', 'A', '2', '3', '4', '5', '6', '7', '8', '9', 'X', 'J', 'Q'};
-int main()
+
+void pokerInit(int cardHeap[], int cardNum)
 {
-	cout << "Poker Dealer: " << endl;
-	int cardHeap[CARDNUM];
+	Randomize();
 	// init card heap
-	for(int i = 1; i <= CARDNUM; i++)
+	for(int i = 1; i <= cardNum; i++)
 	{
 		cardHeap[i - 1] = i;
 	}
-	Randomize();
+}
+void pokerDealer(int cardHeap[], int cardNum)
+{
 	// dealer card
 	for(int i = CARDNUM; i > 0; i--)
 	{
@@ -45,5 +47,12 @@ int main()
 		}
 		cout << poker[curCard % 13] << endl;
 	}
+}
+int main()
+{
+	cout << "Poker Dealer: " << endl;
+	int cardHeap[CARDNUM];
+	pokerInit(cardHeap, CARDNUM);
+	pokerDealer(cardHeap, CARDNUM);
 	return 0;
 }
